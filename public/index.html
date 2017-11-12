@@ -1,0 +1,92 @@
+<html ng-app="student">
+<head>
+    <title>Sample App</title>
+
+    <!-- Add JQuery + Bootstrap JS / CSS + AngularJS-->
+    <script src="./vendor/jquery/jquery.js"></script>
+    <script src="./vendor/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="./vendor/bootstrap/css/bootstrap.css">
+   
+	<script src="./vendor/angular/angular.js"></script>
+    <script src="./vendor/angular/angular-route.js"></script>
+	
+    <!-- Our Script -->
+    <script src="./main.js"></script>
+
+</head>
+<body ng-controller="MainController">
+   
+
+   <!-- Our HTML -->
+	
+    <div class="container">
+        <h1>List</h1>
+
+        <!-- Existing items rows -->
+        
+		<table>
+				<th>
+					<td>
+					First Name
+					</td>
+					<td>
+					Middle Name
+					</td>
+					<td>
+					Last Name
+					</td>
+					<td>
+					Grade
+					</td>
+					<td>
+					Nationality
+					</td>
+					<td>
+					Gender
+					</td>
+				</th>
+		</table>
+				<div class="row">
+				<div ng-repeat="item in vm.list track by item._id" style="padding:10px">
+				{{item.firstName}} {{item.middleName}} {{item.lastName}} {{item.grade}}    {{item.gender}} {{item.nationality}}
+                <button class="btn btn-danger" ng-click="vm.removeItem(item)">x</button>
+                
+				</div>
+			
+	
+            
+		
+        </div>
+
+        <!-- New Item row -->
+        <div class="row">
+            <form role="form">
+                <div class="form-group">
+                    <label for="newItemDetails">New Item Details:</label>
+                    <input type="text" class="form-control" 
+                           placeholder="First Name" 
+                           ng-model="vm.newItemDetails.firstName">
+					<input type="text" class="form-control" 
+                           placeholder="Middle Name" 
+                           ng-model="vm.newItemDetails.middleName">
+					<input type="text" class="form-control" 
+                           placeholder="Last Name" 
+                           ng-model="vm.newItemDetails.lastName">
+					<input type="text" class="form-control" 
+                           placeholder="Grade" 
+                           ng-model="vm.newItemDetails.grade">
+					<input type="text" class="form-control" 
+                           placeholder="Nationality" 
+                           ng-model="vm.newItemDetails.nationality">
+					<input type="text" class="form-control" 
+                           placeholder="Gender" 
+                           ng-model="vm.newItemDetails.gender">	   
+                </div>
+                <button type="submit" class="btn btn-primary" 
+                        ng-click="vm.addItem()" 
+                        ng-disabled="!vm.newItemDetails">Add</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
